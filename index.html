@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Download Notflix for Android. Your entertainment, your way.">
+<title>Notflix — Download for Android</title>
+<style>
+:root{--red:#e50914;--red2:#ff2633;--bg:#080808;--muted:#aaa;--panel:#121212}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:#fff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 12%,rgba(229,9,20,.19),transparent 48%),radial-gradient(ellipse at 90% 80%,rgba(229,9,20,.07),transparent 34%);z-index:-1}
+a{color:inherit;text-decoration:none}
+header{height:78px;display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:auto;padding:0 26px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-1.8px;font-size:27px}
+.brand-mark{width:34px;height:38px;border-radius:9px;background:linear-gradient(145deg,#ff303b,#a80008);display:grid;place-items:center;box-shadow:0 0 28px #e5091438;font-size:23px;font-weight:1000}
+.badge{border:1px solid #303030;color:#cfcfcf;padding:9px 13px;border-radius:30px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase}
+.hero{max-width:1180px;margin:0 auto;min-height:650px;padding:70px 26px 80px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#ff5962;font-size:12px;font-weight:800;letter-spacing:2.6px;text-transform:uppercase}
+.dot{width:7px;height:7px;background:var(--red);border-radius:50%;box-shadow:0 0 13px var(--red)}
+h1{font-size:clamp(55px,8vw,100px);line-height:.92;letter-spacing:-6px;margin:24px 0 22px;font-weight:950}
+h1 span{display:block;color:var(--red);text-shadow:0 0 45px #e5091436}
+.lead{font-size:18px;line-height:1.75;color:#b8b8b8;max-width:540px;margin:0 0 30px}
+.actions{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+.download{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--red);padding:17px 24px;border-radius:10px;font-weight:850;font-size:15px;box-shadow:0 10px 35px #e5091430;transition:.2s transform,.2s background}
+.download:hover{transform:translateY(-3px);background:var(--red2)}
+.download svg{width:21px;height:21px}
+.secondary{padding:16px 21px;border:1px solid #353535;border-radius:10px;color:#ddd;font-size:14px;font-weight:700;transition:.2s}
+.secondary:hover{border-color:#777}
+.meta{display:flex;gap:23px;flex-wrap:wrap;margin-top:28px;color:#929292;font-size:12px}
+.meta span{display:flex;align-items:center;gap:7px}.meta b{color:#ddd;font-weight:700}
+.visual{position:relative;display:grid;place-items:center;min-height:440px}
+.orbit{position:absolute;width:min(390px,90%);aspect-ratio:1;border:1px solid #ffffff0d;border-radius:50%;box-shadow:0 0 100px #e5091410,inset 0 0 70px #e5091408}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #ffffff0a;border-radius:50%;inset:28px}
+.orbit:after{inset:58px}
+.app-card{position:relative;width:min(440px,100%);height:235px;border:1px solid #e509144d;border-radius:40px 0 0 40px;background:linear-gradient(120deg,#100b0e,#19121b 75%);box-shadow:0 35px 100px #000,0 0 75px #e5091420;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;transform:rotate(-3deg);animation:float 5s ease-in-out infinite;overflow:hidden}
+.app-topline{height:35px;border-bottom:1px solid #ffffff13;display:flex;align-items:center;gap:6px;padding-left:20px}
+.tiny-dot{width:5px;height:5px;border-radius:50%;background:#e50914;box-shadow:0 0 10px #e50914}
+.logo-lockup{display:flex;align-items:center;gap:14px;padding:28px 25px 22px;white-space:nowrap}
+.app-name{font-size:clamp(27px,4vw,43px);font-weight:1000;letter-spacing:-2px;margin:0;color:#ffb5b9;text-shadow:0 0 16px #ff263366,0 0 35px #e5091466}
+.ultra-badge{border:1px solid #ffffff38;background:#ffffff0b;border-radius:30px;padding:7px 15px;font-size:11px;letter-spacing:1.7px;font-weight:850;color:#eee}
+.app-divider{height:1px;background:#ffffff16}
+.equalizer{display:flex;align-items:center;justify-content:center;gap:5px;height:66px;margin-top:auto}
+.equalizer i{width:5px;height:26px;border-radius:5px;background:#ff1724;box-shadow:0 0 12px #e5091480;animation:equalize .85s ease-in-out infinite alternate}
+.equalizer i:nth-child(2n){animation-delay:-.4s;height:37px}.equalizer i:nth-child(3n){animation-delay:-.2s;height:20px}.equalizer i:nth-child(4n){animation-delay:-.6s;height:31px}
+.app-caption{text-align:center;color:#797078;font-size:8px;letter-spacing:3px;padding:0 0 13px}
+.float-tag{position:absolute;border:1px solid #ffffff18;background:#151515dd;backdrop-filter:blur(12px);border-radius:12px;padding:12px 15px;font-size:12px;color:#ddd;box-shadow:0 12px 35px #000}
+.tag-one{top:62px;right:0}.tag-two{bottom:66px;left:0}
+.float-tag strong{color:#fff;display:block;font-size:14px;margin-bottom:3px}
+section{max-width:1180px;margin:0 auto;padding:35px 26px 80px}
+.section-label{color:#ff5962;font-size:11px;letter-spacing:2.5px;font-weight:850;text-transform:uppercase}
+h2{font-size:clamp(30px,4vw,45px);letter-spacing:-1.8px;margin:12px 0 32px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid #ffffff0e;border-radius:18px;padding:25px;min-height:170px}
+.icon{width:42px;height:42px;border-radius:12px;background:#e5091419;border:1px solid #e5091435;display:grid;place-items:center;font-size:20px;margin-bottom:20px}
+.feature h3{font-size:17px;margin:0 0 9px}.feature p{font-size:13px;color:#999;line-height:1.7;margin:0}
+.install{display:grid;grid-template-columns:.7fr 1.3fr;gap:35px;align-items:start;background:linear-gradient(120deg,#180b0c,#101010 55%);border:1px solid #ffffff10;border-radius:22px;padding:34px}
+.install h2{margin-bottom:10px}.install p{color:#999;line-height:1.7;font-size:14px;margin:0}
+.steps{display:grid;gap:14px}.step{display:flex;gap:14px;align-items:flex-start}.num{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center;background:#e5091420;color:#ff5962;font-weight:800;font-size:13px}.step strong{display:block;margin:2px 0 5px;font-size:14px}.step p{font-size:12px}
+footer{border-top:1px solid #ffffff10;padding:26px;text-align:center;color:#707070;font-size:12px}
+footer b{color:#aaa}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(-1deg)}}
+@keyframes equalize{from{transform:scaleY(.55);opacity:.7}to{transform:scaleY(1.2);opacity:1}}
+@media(max-width:760px){header{height:68px;padding:0 19px}.brand{font-size:24px}.hero{grid-template-columns:1fr;padding:58px 22px 45px;gap:10px}.hero-copy{text-align:center}.lead{margin-left:auto;margin-right:auto;font-size:16px}.actions{justify-content:center}.meta{justify-content:center}.visual{min-height:390px}.app-card{width:min(390px,100%);height:220px}.logo-lockup{padding:25px 18px 20px;gap:10px}.ultra-badge{padding:6px 10px;font-size:9px}.app-name{font-size:clamp(25px,7vw,36px)}.tag-one{right:2px;top:40px}.tag-two{left:2px;bottom:45px}.features{grid-template-columns:1fr}.feature{min-height:auto}.install{grid-template-columns:1fr;padding:25px}.badge{font-size:10px;padding:8px}.visual{margin-top:5px}h1{letter-spacing:-3.5px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#" aria-label="Notflix home"><span class="brand-mark">N</span> NOTFLIX</a>
+  <span class="badge">Official Android Download</span>
+</header>
+
+<main>
+  <section class="hero" style="padding-top:0;padding-bottom:25px">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span> Entertainment, your way</div>
+      <h1>YOUR NEXT<br><span>PLAY.</span></h1>
+      <p class="lead">Meet Notflix — a sleek streaming companion designed for your Android device. Get the app and make your screen your entertainment hub.</p>
+      <div class="actions">
+        <a class="download" href="https://github.com/nickjonoob-hub/notflix/releases/download/notflix/app-debug.apk" download="Notflix.apk" id="downloadBtn">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M4 17v3h16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download APK
+        </a>
+        <a class="secondary" href="#features">Explore features <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="meta">
+        <span>▣ <b>Android</b></span>
+        <span>⇩ Direct APK link</span>
+        <span>◈ <b>Notflix</b> app</span>
+      </div>
+    </div>
+    <div class="visual" aria-label="Notflix app logo illustration">
+      <div class="orbit"></div>
+      <div class="app-card">
+        <div class="app-topline"><span class="tiny-dot"></span><span class="tiny-dot"></span><span class="tiny-dot"></span></div>
+        <div class="logo-lockup"><div class="app-name">NOTFLIX</div><div class="ultra-badge">8K ULTRA</div></div>
+        <div class="app-divider"></div>
+        <div class="equalizer" aria-label="Animated audio equalizer">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="app-caption">YOUR ENTERTAINMENT HUB</div>
+      </div>
+      <div class="float-tag tag-one"><strong>NOTFLIX</strong>Made for Android</div>
+      <div class="float-tag tag-two"><strong>Ready when you are.</strong>Your next play starts here.</div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-label">Made for your screen</div>
+    <h2>A better way to press play.</h2>
+    <div class="features">
+      <article class="feature"><div class="icon">▶</div><h3>Streaming-focused</h3><p>A clean, cinematic interface built around discovering and watching content.</p></article>
+      <article class="feature"><div class="icon">▦</div><h3>Organized browsing</h3><p>Explore channels and categories with a layout designed to feel simple and familiar.</p></article>
+      <article class="feature"><div class="icon">◉</div><h3>Android ready</h3><p>Download the APK directly from the Notflix release link and install it on a compatible Android device.</p></article>
+    </div>
+  </section>
+
+  <section>
+    <div class="install">
+      <div>
+        <div class="section-label">Quick setup</div>
+        <h2>Install in minutes.</h2>
+        <p>Get Notflix onto your Android device with these simple steps.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><div><strong>Download the APK</strong><p>Tap the Download APK button above and wait for the file to finish downloading.</p></div></div>
+        <div class="step"><span class="num">2</span><div><strong>Open the downloaded file</strong><p>Find Notflix.apk in your Downloads folder and tap it to begin installation.</p></div></div>
+        <div class="step"><span class="num">3</span><div><strong>Allow installation if prompted</strong><p>If Android asks, allow your browser or file manager to install apps from this source. Only proceed if you trust the APK.</p></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> <b>Notflix</b>. Built for your entertainment. <br><span style="display:inline-block;margin-top:8px">Only download and use content you are authorized to access.</span></footer>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('downloadBtn').addEventListener('click', function(){
+  // The button links directly to the APK hosted on GitHub.
+});
+</script>
+</body>
+</html>
